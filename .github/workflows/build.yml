@@ -40,7 +40,14 @@ jobs:
             /usr/local/lib/android/sdk/tools/bin/sdkmanager
           sudo ln -sf /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager \
             /usr/local/lib/android/sdk/tools/bin/avdmanager
-          buildozer -v android debug 2>&1 | tee buildozer.log || (tail -100 buildozer.log && exit 1)
+          buildozer -v android debug 2>&1 | tee buildozer_full.log; exit ${PIPESTATUS[0]}
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: buildozer-log
+          path: buildozer_full.log
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
