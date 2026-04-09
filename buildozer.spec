@@ -19,7 +19,7 @@ android.archs = arm64-v8a
 android.allow_backup = True
 android.logcat_filters = *:S python:D
 android.sdk_path = /usr/local/lib/android/sdk
-android.ndk_path = /usr/local/lib/android/sdk/ndk/27.3.13750724
+android.ndk_path = /usr/local/lib/android/sdk/ndk/25.2.9519653
 
 [buildozer]
 log_level = 2

@@ -27,11 +27,15 @@ jobs:
             libffi-dev libssl-dev
           pip install buildozer cython==0.29.33
 
+      - name: Install NDK 25b
+        run: |
+          echo "y" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653"
+
       - name: Build APK
         env:
           ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
           ANDROID_HOME: /usr/local/lib/android/sdk
-          ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/27.3.13750724
+          ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/25.2.9519653
           JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
         run: |
           export PATH=$JAVA_HOME/bin:$PATH
