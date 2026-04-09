@@ -35,13 +35,12 @@ jobs:
           JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
         run: |
           export PATH=$JAVA_HOME/bin:$PATH
-          # Create legacy tools/bin path Buildozer expects
           sudo mkdir -p /usr/local/lib/android/sdk/tools/bin
           sudo ln -sf /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
             /usr/local/lib/android/sdk/tools/bin/sdkmanager
           sudo ln -sf /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager \
             /usr/local/lib/android/sdk/tools/bin/avdmanager
-          buildozer android debug
+          buildozer -v android debug 2>&1 | tee buildozer.log || (tail -100 buildozer.log && exit 1)
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
