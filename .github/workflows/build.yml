@@ -37,6 +37,7 @@ jobs:
           ANDROID_HOME: /usr/local/lib/android/sdk
           ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/25.2.9519653
           JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
+          PIP_NO_BINARY: zstandard
         run: |
           export PATH=$JAVA_HOME/bin:$PATH
           sudo mkdir -p /usr/local/lib/android/sdk/tools/bin
