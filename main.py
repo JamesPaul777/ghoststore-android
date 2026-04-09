@@ -1,3 +1,14 @@
+import sys
+import os
+
+# Add core directory to path so pipeline.py can find compress, encrypt, etc.
+app_dir = os.path.dirname(os.path.abspath(__file__))
+core_dir = os.path.join(app_dir, "core")
+if core_dir not in sys.path:
+    sys.path.insert(0, core_dir)
+if app_dir not in sys.path:
+    sys.path.insert(0, app_dir)
+
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from ui.home_screen import HomeScreen
